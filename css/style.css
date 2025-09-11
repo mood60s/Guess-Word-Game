@@ -1,0 +1,329 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #f44336;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eee;
+}
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 50px;
+  background-color: white;
+}
+.guess-game {
+  text-align: center;
+  margin: 20px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.guess-game .game-area .inputs > div {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.guess-game .game-area .inputs > div span {
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 15px;
+  font-variant: small-caps;
+}
+.guess-game .game-area .inputs > div.Hidden {
+  opacity: 0.5;
+  pointer-events: none;
+}
+input {
+  margin: 0 5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  font-size: 60px;
+  caret-color: var(--primary-color);
+  background-color: white;
+  border-bottom: 3px solid #333; 
+}
+input:focus{ 
+outline: 1px solid #ccc;
+}
+input.yes-in-place {
+  background-color: #f89e13;
+  border: #f89e13;
+  color: white;
+}
+input.not-in-place {
+  background-color: #18ba89;
+  border: #18ba89;
+  color: white;
+}
+input.no {
+  background-color: #27303f;
+  border: #27303f;
+  color: white;
+}
+
+.guess-game .key-colors .key-color {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: 0.5s linear;
+  position: relative;
+  background-color: white;
+  z-index: 1;
+}
+.guess-game .key-colors .key-color::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background-color: #ccc;
+  z-index: -1;
+  transition: 0.5s linear;
+  left: 0;
+  top: 0;
+}
+.guess-game .key-colors .key-color:hover::before {
+  height: 100%;
+}
+.key {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.in-place {
+  background-color: #f89e13;
+}
+.not-in-place {
+  background-color: #18ba89;
+}
+.no {
+  background-color: #27303f;
+}
+.key-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  max-width: 100%;
+  margin: 30px auto;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.check {
+  border: none;
+  font-size: 25px;
+  padding: 15px 20px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  flex: 1;
+  position: relative;
+  transition: 0.5s linear;
+  min-width: 150px;
+}
+.check::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: black;
+  width: 1%;
+  height: 0%;
+  transition: 1s linear;
+}
+.check::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: black;
+  width: 1%;
+  height: 0%;
+  transition: 1s linear;
+}
+.check:hover:not(:disabled)::before,
+.check:hover:not(:disabled)::after {
+  height: 100%;
+}
+.check:not(:disabled):hover {
+  background-color: red;
+  border-radius: unset;
+}
+.hint {
+  border: none;
+  font-size: 25px;
+  padding: 15px 20px;
+  background-color: #009688;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: fit-content;
+  border-radius: 6px;
+}
+button:disabled {
+  background-color: black;
+  opacity: 0.4;
+  cursor: no-drop;
+}
+.message {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+.message > span {
+  font-weight: bold;
+  display: block;
+  font-size: 50px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+.message > p {
+  font-size: 30px;
+  font-weight: bold;
+  color: brown;
+  margin-top: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: underline;
+  font-style: italic;
+  font-family: fantasy;
+}
+
+/* Responsive Container */
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.guess-game,
+.key-colors {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Footer */
+footer {
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  background-image: linear-gradient(to right, black 60%, green);
+}
+
+/* FULL Responsive Styles */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .guess-game {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .control {
+    flex-direction: column;
+    width: 90%;
+    gap: 15px;
+  }
+
+  .control .check,
+  .hint {
+    width: 100%;
+    font-size: 20px;
+    padding: 12px 16px;
+  }
+
+  input {
+    width: clamp(35px, 12vw, 45px);
+    height: clamp(35px, 12vw, 45px);
+    font-size: clamp(24px, 6vw, 30px);
+    margin: 5px;
+  }
+
+  .guess-game .game-area .inputs > div {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+  }
+
+  .guess-game .key-colors {
+    width: 100%;
+  }
+
+  .guess-game .key-colors .key-color {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .key-text {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .message {
+    font-size: 22px;
+    padding: 0 10px;
+  }
+
+  .message > span {
+    font-size: 32px;
+  }
+
+  .message > p {
+    font-size: 22px;
+  }
+
+  footer {
+    font-size: 18px;
+    padding: 40px 10px;
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    flex-direction: column;
+  }
+}
