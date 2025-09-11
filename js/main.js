@@ -76,7 +76,6 @@ function generateInput() {
 }
 const guessButton = document.querySelector('.check');
 guessButton.addEventListener('click', handleGuesses);
-console.log(randomWord);
 function handleGuesses() {
   let successGuess = true;
   // Check Letter
@@ -100,7 +99,6 @@ function handleGuesses() {
   }
   // Lets Out Of Loop Check User Win Or Lose,
   if (successGuess === true) {
-    // Add Hidden class To Opacity Parent Input
     messageArea.innerHTML = `You win The Word IS:<span>${randomWord}</span>`;
     if (numberOfHints === 2) {
       messageArea.innerHTML = `<p>congratulations You Didn't Use Hints</p>`;
@@ -165,7 +163,7 @@ function handleBackSpace(event) {
   }
 }
 document.addEventListener('keydown', handleBackSpace);
-// Window OnLoad Functions!
 window.onload = (_) => {
   generateInput();
 };
+
